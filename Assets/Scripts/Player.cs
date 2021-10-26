@@ -34,11 +34,6 @@ public class Player : MonoBehaviour
         }
     }
     
-    //private void OnEnemyDied(int reward)
-    //{
-    //    Money += reward;
-    //}
-
     public void ApplyDamage(int damage)
     {
         _currentHealh -= damage;
@@ -52,5 +47,11 @@ public class Player : MonoBehaviour
     public void AddMoney(int money)
     {
         Money += money;
+    }
+
+    public void BuyWeapon(Weapon weapon)
+    {
+        Money -= weapon.Price;
+        _weapons.Add(weapon);
     }
 }
