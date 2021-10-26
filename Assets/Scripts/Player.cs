@@ -30,11 +30,17 @@ public class Player : MonoBehaviour
             _currentWeapon.Shoot(_shootPoint);
         }
     }
-
-    public void OnEnemyDied(int reward)
+    
+    private void OnEnemyDied(int reward)
     {
         Money += reward;
     }
 
+    public void ApplyDamage(int damage)
+    {
+        _currentHealh -= damage;
 
+        if (_currentHealh <= 0)
+            Destroy(gameObject);
+    }
 }

@@ -2,17 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Transition : MonoBehaviour
+public abstract class Transition : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private State _targetState; 
+
+    protected Player Target { get; private set; }
+
+    public State TargetState => _targetState;
+
+    public bool NeedTransit { get; protected set; }
+
+    public void Init(Player target)
     {
-        
+        Target = target;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        NeedTransit = false;
     }
 }

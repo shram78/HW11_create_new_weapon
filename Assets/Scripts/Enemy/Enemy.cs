@@ -8,7 +8,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int _health;
     [SerializeField] private int _reward;
 
-    [SerializeField] protected Player _player;
+    [SerializeField] protected Player _target;
+
+    public Player Target => _target;
+
 
     public event UnityAction Dying;
 
@@ -21,5 +24,4 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
 }
