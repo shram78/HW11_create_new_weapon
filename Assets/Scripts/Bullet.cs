@@ -12,9 +12,20 @@ public class Bullet : MonoBehaviour
         transform.Translate(Vector2.left * _speed * Time.deltaTime, Space.World);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        
-    }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.TryGetComponent(out Enemy enemy))
+        {
+            Debug.Log("HIT!!!!!!");
+            enemy.TakeDamage(_damage);
+
+            Destroy(gameObject);
+        }
+
+        if (collision.gameObject.TryGetComponent(out KillZone killZone))
+        {
+            Destroy(gameObject);
+        }
+    }
 }
