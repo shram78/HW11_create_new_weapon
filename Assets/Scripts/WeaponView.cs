@@ -37,6 +37,7 @@ public class WeaponView : MonoBehaviour
     public void Render(Weapon weapon)
     {
         _weapon = weapon;
+
         _label.text = weapon.Label;
         _price.text = weapon.Price.ToString();
         _icon.sprite = weapon.Icon;
