@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shotgun : Weapon
-
+public class BareHands : Weapon
 {
-    public override void Shoot(Transform shootPoint)
+    public override void Shoot(Transform shootPoint, float _rateOfFire)
     {
         Instantiate(Bullet, shootPoint.position, Quaternion.identity);
     }

@@ -6,7 +6,7 @@ public class State : MonoBehaviour
 {
     [SerializeField] private List<Transition> _transitions;
 
-    protected Player Target { get; set; } // сэт надо прайват?
+    protected Player Target { get; private set; } // сэт надо прайват?
 
     public void Enter(Player target) // надо проверить не выключено ли состояние. Мы их будем выключать при разных стейтах
     {

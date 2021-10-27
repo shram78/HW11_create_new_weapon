@@ -8,7 +8,6 @@ public class MoneyBalance : MonoBehaviour
     [SerializeField] private TMP_Text _money;
     [SerializeField] private Player _player;
 
-
     private void OnEnable()
     {
         _money.text = _player.Money.ToString();
@@ -21,11 +20,8 @@ public class MoneyBalance : MonoBehaviour
         _player.MoneyChanged -= OnMoneyChanged;
     }
 
-
-
     private void OnMoneyChanged(int money)
     {
         _money.text = money.ToString();
     }
-
 }

@@ -26,7 +26,7 @@ public class AttackState : State
             _lastAttackTime = _delay;
         }
 
-        _lastAttackTime -= Time.deltaTime;// используй для скоротрельности
+        _lastAttackTime -= Time.deltaTime;
     }
 
     private void Attack(Player target)

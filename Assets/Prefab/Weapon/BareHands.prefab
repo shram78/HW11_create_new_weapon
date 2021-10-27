@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1115144724055957909}
-  - component: {fileID: 4282158794665303618}
+  - component: {fileID: 745549697149384968}
   m_Layer: 0
-  m_Name: Shotgun
+  m_Name: BareHands
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4282158794665303618
+--- !u!114 &745549697149384968
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,12 +40,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7661162837195862816}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcdbbbd869eb3944391d9448652e6828, type: 3}
+  m_Script: {fileID: 11500000, guid: d586ec726bfb6694baede33e2c5bce72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _label: "\u0412\u0430\u043B\u0435\u0440\u0430"
-  _price: 5
-  _icon: {fileID: 21300000, guid: 12f7e6eaec1c66a45b9a647b9e0c8c03, type: 3}
-  Bullet: {fileID: -5989723782925308727, guid: 6446206a2e773844384e72d0e93c038f, type: 3}
-  _rateOfFire: 1
-  _isBued: 0
+  _label: "\u0413\u043E\u043B\u044B\u043C\u0438 \u0440\u0443\u043A\u0430\u043C\u0438"
+  _price: 666
+  _icon: {fileID: 21300000, guid: 00c078514fa99fe4e93918d9c11d147b, type: 3}
+  Bullet: {fileID: -8175997412520041855, guid: 0a79126746149de4b8d90fcac615153f, type: 3}
+  _rateOfFire: 0.5

@@ -2,24 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Animator))]
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private int _health;
-    [SerializeField] private List<Weapon> _weapons; // надо будет закрыть, что бы орудие можно было добавлять только из магназина
+    [SerializeField] private List<Weapon> _weapons; 
     [SerializeField] private Transform _shootPoint;
 
     private Weapon _currentWeapon;
     private int _currenWeaponNumber;
     private int _currentHealh;
     private Animator _animator;
+    private string _isShooting = "isShooting";
+    private float _lastShootTime;
 
     public int Money { get; private set; }
 
     public event UnityAction<int, int> HealthChanged;
     public event UnityAction<int> MoneyChanged;
+    public event UnityAction<Weapon> WeaponChanged;
 
     private void Start()
     {
@@ -30,12 +34,23 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        _animator.SetBool(_isShooting, false);
+
+        if (!EventSystem.current.IsPointerOverGameObject())
         {
-            _currentWeapon.Shoot(_shootPoint);
+            if (Input.GetMouseButtonDown(0) && _lastShootTime <= 0)
+            {
+                _animator.SetBool(_isShooting, true);
+
+                _currentWeapon.Shoot(_shootPoint, _currentWeapon.RateOfFire);
+
+                _lastShootTime = _currentWeapon.RateOfFire;
+            }
         }
+
+        _lastShootTime -= Time.deltaTime;
     }
-    
+
     public void ApplyDamage(int damage)
     {
         _currentHealh -= damage;
@@ -56,23 +71,25 @@ public class Player : MonoBehaviour
     {
         Money -= weapon.Price;
         _weapons.Add(weapon);
-        MoneyChanged?.Invoke(Money); // используй для отображения баланса на главном экране
+        MoneyChanged?.Invoke(Money); 
     }
 
     public void NextWeapon()
     {
         if (_currenWeaponNumber == _weapons.Count - 1)
             _currenWeaponNumber = 0;
+
         else
             _currenWeaponNumber++;
 
-        ChangeWeapon(_weapons[_currenWeaponNumber]); // можем передавать ориже, но секйчвс идекс
+        ChangeWeapon(_weapons[_currenWeaponNumber]); 
     }
 
     public void PreviousWeapon()
     {
         if (_currenWeaponNumber == 0)
             _currenWeaponNumber = _weapons.Count - 1;
+
         else
             _currenWeaponNumber--;
 
@@ -82,5 +99,6 @@ public class Player : MonoBehaviour
     private void ChangeWeapon(Weapon weapon)
     {
         _currentWeapon = weapon;
+        WeaponChanged?.Invoke(_currentWeapon);
     }
 }
