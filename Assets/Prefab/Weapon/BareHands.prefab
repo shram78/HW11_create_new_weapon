@@ -48,3 +48,4 @@ MonoBehaviour:
   _icon: {fileID: 21300000, guid: 00c078514fa99fe4e93918d9c11d147b, type: 3}
   Bullet: {fileID: -8175997412520041855, guid: 0a79126746149de4b8d90fcac615153f, type: 3}
   _rateOfFire: 0.5
+  _isBued: 0
